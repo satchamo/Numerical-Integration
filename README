@@ -1,0 +1,13 @@
+integrate.c implements four numerical integration procedures including:
+    - The trapezoid rule
+    - Simpson's one-third rule
+    - Simpson's three-eighths rule
+    - Boole's rule
+
+Each function takes as arguments:
+   - a pointer to a function with one argument (i.e. f(x))
+   - the left bound on the interval of integration
+   - the right bound on the interval of integration
+   - the number of samples to perform on the interval
+
+See main.c for an example.
