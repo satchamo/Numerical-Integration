@@ -41,5 +41,20 @@ long double simpsonThreeEighths(long double (*f)(long double), long double a, lo
 }
 
 long double boole(long double (*f)(long double), long double a, long double b, int n){
-    return 0.0;
+    const long double h = (b-a)/n;
+    long double part_1 = (f(a)+f(b)) * 7, part_2 = 0, part_3 = 0, part_4 = 0;
+
+    for(int i = 1, max = n-1; i <= max; i+= 2)
+        part_2 += f(a+i*h);
+    part_2 *= 32;
+
+    for(int i = 2, max = n-2; i <= max; i+= 4)
+        part_3 += f(a+i*h);
+    part_3 *= 12;
+
+    for(int i = 4, max = n - 4; i <= max; i+=4)
+        part_4 += f(a+i*h);
+    part_4 *= 14;
+
+    return 2.0L/45.0L * h * (part_1 + part_2 + part_3 + part_4);
 }
